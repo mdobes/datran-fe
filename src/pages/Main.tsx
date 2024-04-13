@@ -3,9 +3,16 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import {Marker} from "react-map-gl";
 import {useEffect, useState} from "react";
 
+interface Vehicle {
+    connectionID: string;
+    lon: number;
+    lat: number;
+    idsLine: string;  // Ensure this property is declared
+}
+
 const Main = () => {
 
-    const [vehicles, setVehicles] = useState([]);
+    const [vehicles, setVehicles] = useState<any[]>([]);
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -20,8 +27,7 @@ const Main = () => {
         fetch(`https://www.datran.eu/api/v1/vehicles`)
             .then(response => response.json())
             .then(response => {
-                setVehicles(response.data);
-                console.log(response.data)
+                setVehicles(response.data as Vehicle[]);
             })
     }, []);
 

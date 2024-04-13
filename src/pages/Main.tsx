@@ -7,7 +7,7 @@ interface Vehicle {
     connectionID: string;
     lon: number;
     lat: number;
-    idsLine: string;  // Ensure this property is declared
+    idsLine: string;
 }
 
 const Main = () => {
@@ -37,8 +37,8 @@ const Main = () => {
                 longitude: 15.7495473,
                 zoom: 6
             }}
-            maxBounds={[11.2401111182, 48.5553052842, 19.8531441586, 51.1172677679]}
-            style={{minWidth: "100dvh", minHeight: "100dvh"}}
+            //maxBounds={[11.2401111182, 48.5553052842, 19.8531441586, 51.1172677679]}
+            style={{minWidth: "100dvw", minHeight: "100dvh"}}
             mapStyle="./map/style_light.json"
             attributionControl={false}
         >

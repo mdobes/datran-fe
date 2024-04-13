@@ -8,6 +8,7 @@ import VehicleMarker from "../components/VehicleMarker/VehicleMarker.tsx";
 const Main = () => {
 
     const [vehicles, setVehicles] = useState<any[]>([]);
+    const [mapZoom, setMapZoom] = useState<number>(6);
 
     useEffect(() => {
         const fetchVehicles = () => {
@@ -27,22 +28,22 @@ const Main = () => {
 
     return (
         <Map
+            onZoom={(e) => { setMapZoom(e.viewState.zoom); console.log(e.viewState.zoom)}}
+
             initialViewState={{
                 latitude: 49.7273796,
                 longitude: 15.7495473,
                 zoom: 6
             }}
+
             //maxBounds={[11.2401111182, 48.5553052842, 19.8531441586, 51.1172677679]}
             style={{minWidth: "100dvw", minHeight: "100dvh"}}
             mapStyle="./map/style_light.json"
             attributionControl={false}
         >
             {vehicles?.map(vehicle => (
-                <Marker key={vehicle.connectionID}
-                        longitude={vehicle.lon}
-                        latitude={vehicle.lat}
-                >
-                    <VehicleMarker vehicle={vehicle} />
+                <Marker key={vehicle.connectionID} longitude={vehicle.lon} latitude={vehicle.lat}>
+                    <VehicleMarker zoom={mapZoom} vehicle={vehicle} />
                 </Marker>)
             )}
         </Map>

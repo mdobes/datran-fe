@@ -12,20 +12,20 @@ interface Vehicle {
 
 const Main = () => {
 
-    const [vehicles, setVehicles] = useState([]);
+    const [vehicles, setVehicles] = useState<any[]>([]);
 
     useEffect(() => {
         const fetchVehicles = () => {
             fetch(`https://www.datran.eu/api/v1/vehicles`)
                 .then(response => response.json())
                 .then(data => {
-                    setVehicles(data.data);
+                    setVehicles(data.data as Vehicle[]);
                 })
                 .catch(error => console.error('Error fetching vehicles:', error));
         };
 
         fetchVehicles();
-        
+
         const intervalId = setInterval(fetchVehicles, 10000);
         return () => clearInterval(intervalId);
     }, []);

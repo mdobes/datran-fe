@@ -2,7 +2,6 @@ import Map from 'react-map-gl/maplibre';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {Marker} from "react-map-gl";
 import {useEffect, useState} from "react";
-import styles from './Main.module.scss';
 import Vehicle from "../interfaces/Vehicle.ts";
 import VehicleMarker from "../components/VehicleMarker/VehicleMarker.tsx";
 

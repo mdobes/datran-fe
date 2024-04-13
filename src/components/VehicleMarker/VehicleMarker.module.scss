@@ -1,0 +1,15 @@
+.vehicleMarker {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    span {
+        background-color: white;
+        color: black;
+    }
+
+    .vehicleIcon {
+        transition: all 0.5s ease-out;
+        transform-origin: 314.5px 309.9px;
+    }
+}

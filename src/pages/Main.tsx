@@ -12,23 +12,22 @@ interface Vehicle {
 
 const Main = () => {
 
-    const [vehicles, setVehicles] = useState<any[]>([]);
-    const [time, setTime] = useState(new Date());
+    const [vehicles, setVehicles] = useState([]);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setTime(new Date());
-        }, 10000);
+        const fetchVehicles = () => {
+            fetch(`https://www.datran.eu/api/v1/vehicles`)
+                .then(response => response.json())
+                .then(data => {
+                    setVehicles(data.data);
+                })
+                .catch(error => console.error('Error fetching vehicles:', error));
+        };
 
-        return () => clearInterval(interval);
-    }, []);
-
-    useEffect(() => {
-        fetch(`https://www.datran.eu/api/v1/vehicles`)
-            .then(response => response.json())
-            .then(response => {
-                setVehicles(response.data as Vehicle[]);
-            })
+        fetchVehicles();
+        
+        const intervalId = setInterval(fetchVehicles, 10000);
+        return () => clearInterval(intervalId);
     }, []);
 
     return (

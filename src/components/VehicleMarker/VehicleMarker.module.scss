@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    transition: all 0.5s ease-out;
 
     span {
         background-color: white;
         color: black;
+        font-size: 1rem;
     }
 
     .vehicleIcon {

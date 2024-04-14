@@ -1,14 +1,23 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Main from "./pages/Main.tsx";
+import '@mantine/core/styles.css';
+
+import { MantineProvider } from '@mantine/core';
 
 function App() {
 
   return (
-    <BrowserRouter>
-        <Routes>
-            <Route index element={<Main />}/>
-        </Routes>
-    </BrowserRouter>
+      <MantineProvider
+          theme={{
+              fontFamily: '"Manrope", sans-serif'
+          }}
+      >
+        <BrowserRouter>
+            <Routes>
+                <Route index element={<Main />}/>
+            </Routes>
+        </BrowserRouter>
+      </MantineProvider>
   )
 }
 
